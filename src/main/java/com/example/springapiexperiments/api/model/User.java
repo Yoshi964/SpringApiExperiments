@@ -13,6 +13,11 @@ public class User {
         this.email = email;
     }
 
+    @Override
+    public String toString() {
+        return String.format("ID: %d | Name: %s | age: %d | email: %s", id, name, age, email);
+    }
+
     public int getId() {
         return id;
     }

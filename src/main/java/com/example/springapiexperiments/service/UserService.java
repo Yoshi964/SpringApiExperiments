@@ -17,8 +17,13 @@ public class UserService {
         this.usersList.addAll(Arrays.asList(user1, user2));
     }
 
-    public User getUser(Integer id) {
+    public User getUser(int id) {
         return usersList.stream().filter(u -> u.getId() == id).findFirst().orElse(null);
+    }
+
+    public void addUser(User user){
+        usersList.add(user);
+        System.out.println("New user added: " + user);
     }
 
 }
