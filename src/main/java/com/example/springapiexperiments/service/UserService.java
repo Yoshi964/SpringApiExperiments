@@ -1,29 +1,24 @@
 package com.example.springapiexperiments.service;
 
+import com.example.springapiexperiments.UserRepository.UserRepository;
 import com.example.springapiexperiments.api.model.User;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 @Service
 public class UserService {
-    private final List<User> usersList= new ArrayList<>();
+    private final UserRepository userRepository;
 
-    public UserService() {
-        User user1 = new User(1, "John Doe", 18, "johnDoe@propMail.com");
-        User user2 = new User(2, "Mark Clark", 21, "marcClark@propMail.com");
-        this.usersList.addAll(Arrays.asList(user1, user2));
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+
     }
 
     public User getUser(int id) {
-        return usersList.stream().filter(u -> u.getId() == id).findFirst().orElse(null);
+        return userRepository.findById(id).orElse(null);
     }
 
-    public void addUser(User user){
-        usersList.add(user);
-        System.out.println("New user added: " + user);
+    public void addUser(User user) {
+        userRepository.save(user);
     }
 
 }
