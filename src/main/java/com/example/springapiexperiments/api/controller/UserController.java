@@ -29,4 +29,9 @@ public class UserController {
     public void updateUser(@RequestParam Integer id, @RequestBody User user){
         userService.updateUser(id, user);
     }
+
+    @DeleteMapping(value = "/users")
+    public void deleteUser(@RequestParam Integer id){
+        userService.deleteUser(id);
+    }
 }
