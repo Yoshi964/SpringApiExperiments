@@ -24,4 +24,9 @@ public class UserController {
     public void addUser(@RequestBody User user){
         userService.addUser(user);
     }
+
+    @PatchMapping(value = "/users")
+    public void updateUser(@RequestParam Integer id, @RequestBody User user){
+        userService.updateUser(id, user);
+    }
 }

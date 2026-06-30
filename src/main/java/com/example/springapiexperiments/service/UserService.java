@@ -21,4 +21,18 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public void updateUser(Integer id, User user) {
+       userRepository.findById(id).ifPresent(user1 -> {
+           if(user.getAge()!=null){
+               user1.setAge(user.getAge());
+           }
+           if(user.getName()!=null){
+               user1.setName(user.getName());
+           }
+           if(user.getEmail()!=null){
+               user1.setEmail(user.getEmail());
+           }
+           userRepository.save(user1);
+       });
+    }
 }
